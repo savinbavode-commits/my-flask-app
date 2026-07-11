@@ -1,3 +1,19 @@
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello! Your Flask app is live on Render 🎉"
+
+@app.route("/health")
+def health():
+    return jsonify(status="ok")
+
+if __name__ == "__main__":
+    # Only used for local testing; Render uses gunicorn instead (see Procfile)
+    app.run(host="0.0.0.0", port=5000, debug=True)
+
 #!/usr/bin/env python3
 """
 Modbus TCP Alarm Monitor  (ModScan-style)
@@ -2318,3 +2334,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
